@@ -5,7 +5,7 @@ init:
 	@echo "🚀 Docker コンテナ起動中..."
 	docker-compose up -d --build
 
-	@echo "⏳ サービスが起動するのを少し待機..."
+	@echo "⏳ サービス起動を少し待機..."
 	sleep 10
 
 	@echo "📂 Composer install..."
@@ -20,4 +20,7 @@ init:
 	@echo "🔗 ストレージリンク作成..."
 	docker-compose exec app php artisan storage:link
 
-	@echo "✅ セットアップ完了！ アプリ: http://localhost:8080 / phpMyAdmin: http://localhost:8081"
+	@echo "🎨 フロントエンドビルド（Docker内Node）..."
+	docker-compose run --rm node
+
+	@echo "✅ セットアップ完了！ http://localhost:8080 へGO！"
